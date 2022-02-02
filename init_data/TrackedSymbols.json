@@ -7,6 +7,13 @@
         "sell_price": "350"
     },
     {
+        "symbol": "SAP.DE",
+        "tracked": "true",
+        "interval_minutes": "5",
+        "buy_price": "112.50",
+        "sell_price": "122"
+    },
+    {
         "symbol": "VAR1.DE",
         "tracked": "true",
         "interval_minutes": "8",
