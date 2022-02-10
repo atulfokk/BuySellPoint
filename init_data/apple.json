@@ -1,0 +1,8 @@
+{
+    "symbol": "AAPL",
+    "notificationCount": "default",
+    "interval": "default",
+    "dayNightDuration": "default",
+    "buy_price": "160",
+    "sell_price": "180"
+}

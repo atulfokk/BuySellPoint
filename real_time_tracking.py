@@ -1,45 +1,40 @@
-import json as js
+from os import listdir
+from os.path import isfile, join
 import logging
 import concurrent.futures
-from turtle import title
-
+import time
 from symbol import Symbol
 
-def get_tracked_symbols():
-    symbols_to_track = "init_data\TrackedSymbols.json"
-
-    with open(symbols_to_track) as fo:
-        list = js.load(fo)
-
-    return [s for s in list if s['tracked'] == 'true']
+def get_symbolfiles():
+    symbol_path = "init_data"
+    files = [join(symbol_path, f) for f in listdir(symbol_path) if isfile(join(symbol_path, f))]
+    json_files = [f for f in files if f[-4:] == 'json']
+    return json_files
 
 
-def thread_function_track_symbol(symbol_node):
-    logging.info("Thread %s: starting", symbol_node['symbol'])
-    track = Symbol(symbol_node['symbol'])
-    track.track(int(symbol_node['interval_minutes']), float(symbol_node['buy_price']), float(symbol_node['sell_price']))
-    logging.info("Thread %s: finishing", symbol_node)
+def thread_function_track_symbol(symbol_file):
+    logging.info("Thread %s: starting", symbol_file[0:-5])
+    symbol = Symbol(symbol_file)
+    symbol.track()
+    logging.info("Thread %s: finishing", symbol_file[0:-5])
 
 
-def is_interrupt():
-    file = 'init_data\App.json'
-    with open(file) as fo:
-        config = js.load(fo)
-    
-    if config["interrupt_execution"] == "true":
-        return True
-    else:
-        return False
-
-
-tracked_list = get_tracked_symbols()
-
-
+# start
 if __name__ == "__main__":
     format = "%(asctime)s: %(message)s"
-    logging.basicConfig(format=format, level=logging.INFO,
-                        datefmt="%H:%M:%S")
+    logging.basicConfig(format=format, level=logging.INFO, datefmt="%H:%M:%S")
+    polling_interval = 15 * 60
+    all_tracked_list = []
 
-    with concurrent.futures.ThreadPoolExecutor(max_workers=10) as executor:
-        executor.map(thread_function_track_symbol, tracked_list)
+    while(True):
+        updated_list = get_symbolfiles()
+        new_tracked_files = [f for f in updated_list if f not in all_tracked_list]
+        
+        if len(new_tracked_files) > 0:
+            with concurrent.futures.ThreadPoolExecutor(max_workers=50) as executor:
+                executor.map(thread_function_track_symbol, new_tracked_files)
+
+            all_tracked_list.append(new_tracked_files)
+
+        time.sleep(polling_interval)
 
