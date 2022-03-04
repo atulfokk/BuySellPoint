@@ -1,8 +1,8 @@
 {
     "symbol": "SAP.DE",
-    "notificationCount": "default",
-    "interval": "6",
+    "notificationCount": "0",
+    "interval": "default",
     "dayNightDuration": "default",
-    "buy_price": "110.60",
+    "buy_price": "99.60",
     "sell_price": "122"
 }
