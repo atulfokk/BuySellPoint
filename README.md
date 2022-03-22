@@ -12,7 +12,11 @@ Known issues:
 [FIXED]
 2. Notifications cannot be stopped while application is running.
 => Future plans to control notifications (how long, how many, what time of the day) at runtime.
+==: Every symbol has its own config file with options to control notifications
 
+
+Added Features:
+1. Global config to control symbol notofications at globally. This avoids the hassle of changing all symbol config.
 
 Planned Features:
 1. Automate Buy/Sell point suggestions based on history, news and user's tollerance of risk.

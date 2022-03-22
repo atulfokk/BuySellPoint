@@ -1,10 +1,12 @@
-"""This file provides actions and information about a symbol"""
+"""This file provides actions and information about a stock symbol"""
 
 from yahoo_fin import stock_info as si
 import time
 import datetime as dt
-from plyer import notification
+from notification import notification
+from notification import Decision
 import json as js
+
 
 class Symbol():
     """This class defines a symbol. Tracks realtime price and notifies buy/sell points"""
@@ -18,7 +20,7 @@ class Symbol():
         self.symbol_file = symbol_file
 
 
-    def set_trading_day(self):
+    def __set_trading_day(self):
         """Sets the Currently running trading day. If it's past 5:30 PM or weekend, it sets the 
         next working day as trading day."""
 
@@ -48,7 +50,7 @@ class Symbol():
         self._notification_count = 0
         while (True):
             self.now = dt.datetime.now()
-            self.set_trading_day()
+            self.__set_trading_day()
             try:
                 with open(self.symbol_file) as fo:
                     self.symbol_info = js.load(fo)
@@ -56,7 +58,7 @@ class Symbol():
                 print(f'ERROR ({self.now}): File not Exist: {self.symbol_file}. Tracking will stop now.')
                 return
 
-            waittime = self.wait_time_seconds()
+            waittime = self.__wait_time_seconds()
             if waittime > 0:
                 time.sleep(waittime)
                 continue
@@ -65,9 +67,9 @@ class Symbol():
                 self.price = si.get_live_price(self.symbol_info['symbol'])
 
                 if self.price <= float(self.symbol_info['buy_price']):
-                    self.notify(self.symbol_info['buy_price'], 'buy')
+                    self.notify(self.symbol_info['buy_price'], Decision.Buy)
                 elif self.price >= float(self.symbol_info['sell_price']):
-                    self.notify(self.symbol_info['sell_price'], 'sell')
+                    self.notify(self.symbol_info['sell_price'], Decision.Sell)
                 
                 waittime = self._default_sleep_duration if self.symbol_info['interval'] == 'default' \
                         else int(self.symbol_info['interval'])
@@ -77,7 +79,7 @@ class Symbol():
             time.sleep( waittime * 60)
 
 
-    def wait_time_seconds(self):
+    def __wait_time_seconds(self):
         """Find all the conditions if the tracking should not start yet."""
         # _day_start and _day_end must be updated before calling this
         # wait for night
@@ -105,10 +107,6 @@ class Symbol():
     
 
     def notify(self, price_point, decision):
-        notification.notify(
-            title = f'{decision.title()} {self.symbol_info["symbol"].title()}',
-            message = f'Current price {self.price} reached or crossed {decision} point {price_point}.',
-            app_icon = 'resources\photo_frame_picture_wall_icon_209724.ico',
-            timeout = 20
-            )
+        message = notification(decision, self.symbol_info["symbol"], self.price, price_point)
+        message.notify_on_windows()
         self._notification_count += 1

@@ -37,4 +37,4 @@ if __name__ == "__main__":
             all_tracked_list.append(new_tracked_files)
 
         time.sleep(polling_interval)
-
+  
