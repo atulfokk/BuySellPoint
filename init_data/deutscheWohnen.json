@@ -1,8 +1,8 @@
 {
     "symbol": "DWNI.DE",
     "notificationCount": "default",
-    "interval": "10",
-    "dayNightDuration": "default",
-    "buy_price": "30.10",
-    "sell_price": "33.95"
+    "interval": "5",
+    "dayNightDuration": "generalDayTime",
+    "buy_price": "31.09",
+    "sell_price": "34.25"
 }

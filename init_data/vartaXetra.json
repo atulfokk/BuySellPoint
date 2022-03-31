@@ -1,8 +1,8 @@
 {
     "symbol": "VAR1.DE",
-    "notificationCount": "0",
-    "interval": "default",
-    "dayNightDuration": "default",
-    "buy_price": "83",
+    "notificationCount": "default",
+    "interval": "1",
+    "dayNightDuration": "generalDayTime",
+    "buy_price": "87",
     "sell_price": "115"
 }

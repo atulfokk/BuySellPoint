@@ -1,8 +1,8 @@
 {
     "symbol": "VOW3.DE",
-    "notificationCount": "0",
+    "notificationCount": "default",
     "interval": "default",
-    "dayNightDuration": "default",
-    "buy_price": "170",
+    "dayNightDuration": "generalDayTime",
+    "buy_price": "150",
     "sell_price": "212"
 }

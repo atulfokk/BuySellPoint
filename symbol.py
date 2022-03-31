@@ -66,9 +66,9 @@ class Symbol():
             try:
                 self.price = si.get_live_price(self.symbol_info['symbol'])
 
-                if self.price <= float(self.symbol_info['buy_price']):
+                if (self.symbol_info['buy_price']) and (self.price <= float(self.symbol_info['buy_price'])):
                     self.notify(self.symbol_info['buy_price'], Decision.Buy)
-                elif self.price >= float(self.symbol_info['sell_price']):
+                elif (self.symbol_info['sell_price']) and (self.price >= float(self.symbol_info['sell_price'])):
                     self.notify(self.symbol_info['sell_price'], Decision.Sell)
                 
                 waittime = self._default_sleep_duration if self.symbol_info['interval'] == 'default' \
@@ -95,7 +95,8 @@ class Symbol():
             self._notification_count = 0
             return waittime * 60
 
-        if not self.symbol_info['buy_price'] and not self.symbol_info['sell_price']:
+        # both buy and sell points are empty
+        if (not self.symbol_info['buy_price']) and (not self.symbol_info['sell_price']):
             self._notification_count = 0
             return waittime * 60
 

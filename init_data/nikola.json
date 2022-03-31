@@ -1,8 +1,8 @@
 {
     "symbol": "NKLA",
-    "notificationCount": "0",
+    "notificationCount": "default",
     "interval": "default",
     "dayNightDuration": "generalDayTime",
-    "buy_price": "7.5",
-    "sell_price": "10"
+    "buy_price": "8.5",
+    "sell_price": "12.5"
 }

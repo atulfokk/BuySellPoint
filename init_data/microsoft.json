@@ -1,6 +1,6 @@
 {
     "symbol": "MSFT",
-    "notificationCount": "0",
+    "notificationCount": "default",
     "interval": "default",
     "dayNightDuration": "generalDayTime",
     "buy_price": "280",

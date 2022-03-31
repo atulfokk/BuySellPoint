@@ -1,6 +1,6 @@
 # BuySellPoint
 What does it do:
-A simple application for individuals who trade shares as a side hobby. It helps to keep track of prices of shares of your choice, and to get runtime WindowsNotification.
+A simple windows application for individuals who trade shares as a side hobby. It helps to keep track of prices of shares of your choice, and to get runtime WindowsNotification.
 
 Technologies:
 Python, yahoo finance.
@@ -16,7 +16,7 @@ Known issues:
 
 
 Added Features:
-1. Global config to control symbol notofications at globally. This avoids the hassle of changing all symbol config.
+1.
 
 Planned Features:
 1. Automate Buy/Sell point suggestions based on history, news and user's tollerance of risk.
