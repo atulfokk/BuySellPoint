@@ -3,7 +3,7 @@ from os.path import isfile, join
 import logging
 import concurrent.futures
 import time
-from symbol import Symbol
+from stock_symbol import Symbol
 
 def get_symbolfiles():
     symbol_path = "init_data"
@@ -23,7 +23,7 @@ def thread_function_track_symbol(symbol_file):
 if __name__ == "__main__":
     format = "%(asctime)s: %(message)s"
     logging.basicConfig(format=format, level=logging.INFO, datefmt="%H:%M:%S")
-    polling_interval = 15 * 60
+    polling_interval = 1 * 60
     all_tracked_list = []
 
     while(True):

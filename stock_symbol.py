@@ -79,10 +79,16 @@ class Symbol():
             time.sleep( waittime * 60)
 
 
+    def notify(self, price_point, decision):
+        message = notification(decision, self.symbol_info["symbol"], self.price, price_point)
+        message.notify_on_windows()
+        self._notification_count += 1
+
+
     def __wait_time_seconds(self):
         """Find all the conditions if the tracking should not start yet."""
         # _day_start and _day_end must be updated before calling this
-        # wait for night
+        # wait for night to pass
         if self.symbol_info['dayNightDuration'] == 'dayTime':
             if self.now < self._day_start:
                 self._notification_count = 0
@@ -105,9 +111,3 @@ class Symbol():
             return waittime * 60
 
         return 0
-    
-
-    def notify(self, price_point, decision):
-        message = notification(decision, self.symbol_info["symbol"], self.price, price_point)
-        message.notify_on_windows()
-        self._notification_count += 1

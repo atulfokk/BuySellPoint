@@ -1,6 +1,6 @@
 {
     "symbol": "DWNI.DE",
-    "notificationCount": "default",
+    "notificationCount": "0",
     "interval": "5",
     "dayNightDuration": "generalDayTime",
     "buy_price": "31.09",

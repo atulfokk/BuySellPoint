@@ -1,8 +1,8 @@
 {
-    "symbol": "FB",
-    "notificationCount": "default",
-    "interval": "10",
+    "symbol": "META",
+    "notificationCount": "0",
+    "interval": "default",
     "dayNightDuration": "generalDayTime",
-    "buy_price": "190",
-    "sell_price": "250"
+    "buy_price": "160",
+    "sell_price": "240"
 }

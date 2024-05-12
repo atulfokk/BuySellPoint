@@ -1,8 +1,8 @@
 {
     "symbol": "ENR.DE",
-    "notificationCount": "default",
-    "interval": "default",
+    "notificationCount": "0",
+    "interval": "2",
     "dayNightDuration": "generalDayTime",
-    "buy_price": "17.50",
-    "sell_price": "25"
+    "buy_price": "14.19",
+    "sell_price": "27.0"
 }

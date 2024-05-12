@@ -1,8 +1,8 @@
 {
-    "symbol": "VOW3.DE",
+    "symbol": "DBK.DE",
     "notificationCount": "0",
     "interval": "default",
     "dayNightDuration": "generalDayTime",
-    "buy_price": "130",
-    "sell_price": "212"
+    "buy_price": "8.5",
+    "sell_price": "10.1"
 }

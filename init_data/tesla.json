@@ -1,8 +1,8 @@
 {
     "symbol": "TSLA",
-    "notificationCount": "default",
+    "notificationCount": "0",
     "interval": "default",
     "dayNightDuration": "generalDayTime",
-    "buy_price": "870",
+    "buy_price": "700",
     "sell_price": "1200"
 }

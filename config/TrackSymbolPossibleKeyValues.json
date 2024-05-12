@@ -1,8 +1,8 @@
 {
-    "symbol": "{Symbol name as shown in yahoo finance}",
+    "symbol": "{Stock Symbol name as registered on any stock exchange}",
     "notificationCount": "'default' (Always but as long as service/application is running) / {Number} (Notifications will stop after this count) / 0 (no notifications)",
     "interval": "'default' (15 minutes) / {Number} (interval duration in minutes, minimum = 1, maximum = 24*60)",
     "dayNightDuration": "'default' (24 Hours but as long as service/application is running) / 'generalDayTime' (08:00 to 22:30 system time and on weekdays) / 'UStime' (for NASDAQ and NSE) / CETtime (for XETRA, FRA)",
-    "buy_price": "{Decimal Number} / (leave blank if buy notification not required)",
-    "sell_price": "{Decimal Number} / (leave blank if sell notification not required)"
+    "buy_price": "{Decimal Number} / (leave blank if buy notification not required) / '{Min/Max/BelowAverage/AboveAverage} {Number}{D for days, M for months}' / 'PAT[{Intraday/Days}][{Up/Down} {Up/Down} ...n times] [{number} {number} ...n times]'",
+    "sell_price": "{Decimal Number} / (leave blank if sell notification not required) / '{Min/Max/BelowAverage/AboveAverage} {Number}{D for days, M for months}' / 'PAT[{Intraday/Days}][{Up/Down} {Up/Down} ...n times] [{number} {number} ...n times]'"
 }

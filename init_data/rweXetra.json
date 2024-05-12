@@ -1,7 +1,7 @@
 {
     "symbol": "RWE.DE",
-    "notificationCount": "default",
-    "interval": "5",
+    "notificationCount": "0",
+    "interval": "default",
     "dayNightDuration": "generalDayTime",
     "buy_price": "38.90",
     "sell_price": ""
